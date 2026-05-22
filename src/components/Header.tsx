@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { href: "#productos", label: "Productos" },
@@ -34,13 +35,15 @@ export default function Header() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between md:h-20">
           {/* Logo */}
-          <a href="#inicio" className="flex items-center gap-2 group">
-            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white font-black text-lg select-none">
-              B
-            </span>
-            <span className="text-xl font-black tracking-tight text-white">
-              BANDAX
-            </span>
+          <a href="#inicio" className="flex items-center">
+            <Image
+              src="/Bandax-Logo.png"
+              alt="Bandax Argentina"
+              width={140}
+              height={48}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </a>
 
           {/* Desktop nav */}

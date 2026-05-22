@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const navProducts = [
   "Bandas Transportadoras",
   "Bandas Modulares",
@@ -22,13 +24,14 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <a href="#inicio" className="flex items-center gap-2 mb-4">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white font-black text-lg">
-                B
-              </span>
-              <span className="text-xl font-black tracking-tight text-white">
-                BANDAX
-              </span>
+            <a href="#inicio" className="flex items-center mb-4">
+              <Image
+                src="/Bandax-Logo.png"
+                alt="Bandax Argentina"
+                width={130}
+                height={44}
+                className="h-9 w-auto object-contain"
+              />
             </a>
             <p className="text-sm text-slate-400 leading-relaxed">
               Soluciones industriales en bandas y correas de transmisión. Buenos
