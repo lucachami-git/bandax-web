@@ -1,3 +1,4 @@
+import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Products from "@/components/Products";
@@ -11,6 +12,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 export default function Home() {
   return (
     <>
+      <TopBar />
       <Header />
       <main>
         <Hero />

@@ -32,7 +32,7 @@ export default function Hero() {
       <div className="absolute top-1/3 left-1/4 w-96 h-96 rounded-full bg-blue-600/20 blur-3xl pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-72 h-72 rounded-full bg-orange-500/15 blur-3xl pointer-events-none" />
 
-      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-32 w-full">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-44 pb-28 w-full">
         <div className="max-w-3xl">
           {/* Badge */}
           <div className="animate-fade-up inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-300 mb-8">

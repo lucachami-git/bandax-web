@@ -28,8 +28,10 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-slate-900/95 backdrop-blur-md shadow-lg" : "bg-transparent"
+      className={`fixed inset-x-0 top-9 z-40 transition-all duration-300 ${
+        scrolled
+          ? "bg-slate-900/95 backdrop-blur-md shadow-lg"
+          : "bg-gradient-to-b from-slate-700/80 to-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
