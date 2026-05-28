@@ -3,10 +3,10 @@
 import { ShoppingBag, Check } from "lucide-react";
 import { useState } from "react";
 import { useCarrito } from "@/lib/carrito-context";
-import { type Producto } from "@/lib/productos";
+import type { ItemCarrito } from "@/lib/carrito-context";
 
 interface Props {
-  producto: Producto;
+  producto: Pick<ItemCarrito, "id" | "slug" | "nombre" | "categoria">;
   grande?: boolean;
 }
 
@@ -17,12 +17,7 @@ export default function AgregarAlCarritoBtn({ producto, grande = false }: Props)
   const yaEsta = items.some((i) => i.id === producto.id);
 
   const handleClick = () => {
-    agregar({
-      id: producto.id,
-      slug: producto.slug,
-      nombre: producto.nombre,
-      categoria: producto.categoriaNombre,
-    });
+    agregar(producto);
     setAgregado(true);
     setTimeout(() => setAgregado(false), 1500);
   };

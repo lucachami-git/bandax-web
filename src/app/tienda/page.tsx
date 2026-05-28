@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { CATEGORIAS, PRODUCTOS, COLOR_MAP } from "@/lib/productos";
+import { getProductos, colorForRubro } from "@/lib/erp-api";
+import { COLOR_MAP } from "@/lib/productos";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
-import TiendaFiltros from "./TiendaFiltros";
+import TiendaGrid from "./TiendaGrid";
 
 export const metadata = {
   title: "Tienda | Bandax Argentina — Bandas Industriales y Correas",
@@ -12,7 +13,12 @@ export const metadata = {
     "Catálogo completo de bandas transportadoras, modulares, de poliuretano y correas de transmisión. Solicitá tu cotización sin compromiso.",
 };
 
-export default function TiendaPage() {
+export const dynamic   = "force-dynamic";
+export const revalidate = 60;
+
+export default async function TiendaPage() {
+  const { productos, rubros } = await getProductos();
+
   return (
     <>
       <TopBar />
@@ -32,36 +38,43 @@ export default function TiendaPage() {
               Catálogo de Productos
             </h1>
             <p className="mt-2 text-slate-400 max-w-2xl">
-              Más de 8 líneas de productos industriales. Seleccioná los que
-              necesitás y solicitá tu cotización sin compromiso.
+              {productos.length > 0
+                ? `${productos.length} productos disponibles. Seleccioná los que necesitás y solicitá tu cotización.`
+                : "Catálogo industrial de bandas y correas de transmisión."}
             </p>
 
-            {/* Categorías como chips */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              <Link
-                href="/tienda"
-                className="rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold text-blue-300 hover:bg-blue-500/20 transition-colors"
-              >
-                Todos
-              </Link>
-              {CATEGORIAS.map((cat) => {
-                const c = COLOR_MAP[cat.color] ?? COLOR_MAP.blue;
-                return (
-                  <Link
-                    key={cat.slug}
-                    href={`/tienda?categoria=${cat.slug}`}
-                    className={`rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors ${c.ring} ${c.badge} hover:opacity-80`}
-                  >
-                    {cat.nombre}
-                  </Link>
-                );
-              })}
-            </div>
+            {/* Filtros de categoría */}
+            {rubros.length > 0 && (
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Link
+                  href="/tienda"
+                  className="rounded-full border border-blue-500/40 bg-blue-500/10 px-4 py-1.5 text-sm font-semibold text-blue-300 hover:bg-blue-500/20 transition-colors"
+                >
+                  Todos
+                </Link>
+                {rubros.map((r) => {
+                  const color = colorForRubro(r.id);
+                  const c = COLOR_MAP[color] ?? COLOR_MAP.blue;
+                  return (
+                    <Link
+                      key={r.id}
+                      href={`/tienda?rubro=${r.codigo}`}
+                      className={`rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors ${c.ring} ${c.badge} hover:opacity-80`}
+                    >
+                      {r.nombre}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Grid con filtros activos */}
-        <TiendaFiltros categorias={CATEGORIAS} productos={PRODUCTOS} />
+        {/* Grid de productos con filtros client */}
+        <TiendaGrid
+          productos={productos}
+          rubros={rubros}
+        />
       </main>
       <Footer />
       <WhatsAppButton />
