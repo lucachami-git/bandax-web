@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import CarritoBtn from "@/components/CarritoBtn";
 
 const navLinks = [
   { href: "#productos", label: "Productos" },
@@ -63,6 +65,13 @@ export default function Header() {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-3">
+            <Link
+              href="/tienda"
+              className="px-4 py-2 text-sm font-semibold text-slate-300 hover:text-white transition-colors"
+            >
+              Tienda
+            </Link>
+            <CarritoBtn />
             <a
               href={WHATSAPP}
               target="_blank"
@@ -75,13 +84,16 @@ export default function Header() {
           </div>
 
           {/* Mobile toggle */}
-          <button
-            className="md:hidden text-white p-2"
-            onClick={() => setOpen(!open)}
-            aria-label="Menú"
-          >
-            {open ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          <div className="md:hidden flex items-center gap-2">
+            <CarritoBtn />
+            <button
+              className="text-white p-2"
+              onClick={() => setOpen(!open)}
+              aria-label="Menú"
+            >
+              {open ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -99,6 +111,13 @@ export default function Header() {
                 {l.label}
               </a>
             ))}
+            <Link
+              href="/tienda"
+              onClick={handleNav}
+              className="rounded-lg px-4 py-3 text-base font-medium text-blue-400 hover:bg-slate-800 hover:text-white transition-colors"
+            >
+              Tienda →
+            </Link>
           </nav>
           <a
             href={WHATSAPP}

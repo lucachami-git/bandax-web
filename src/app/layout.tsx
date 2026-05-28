@@ -2,6 +2,8 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import { CarritoProvider } from "@/lib/carrito-context";
+import CarritoPanel from "@/components/CarritoPanel";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -46,7 +48,10 @@ export default function RootLayout({
     <html lang="es" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <ServiceWorkerRegistration />
-        {children}
+        <CarritoProvider>
+          {children}
+          <CarritoPanel />
+        </CarritoProvider>
       </body>
     </html>
   );
