@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 const WHATSAPP =
-  "https://wa.me/5491100000000?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+  "https://wa.me/5491147175151?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
 
 const highlights = [
   "Stock permanente listo para entregar",

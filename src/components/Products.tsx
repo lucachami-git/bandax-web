@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import {
   Layers,
   Grid3X3,
@@ -18,6 +19,7 @@ interface Product {
   tags: string[];
   color: string;
   image: string;
+  slug: string;
 }
 
 const products: Product[] = [
@@ -29,6 +31,7 @@ const products: Product[] = [
     tags: ["Alimenticia", "Logística", "Manufactura"],
     color: "blue",
     image: "/images/productos/transportadoras-header.jpg",
+    slug: "bandas-transportadoras",
   },
   {
     icon: Grid3X3,
@@ -38,6 +41,7 @@ const products: Product[] = [
     tags: ["Modular", "Fácil reemplazo"],
     color: "indigo",
     image: "/images/hero/hero-2.jpg",
+    slug: "bandas-modulares",
   },
   {
     icon: Zap,
@@ -47,6 +51,7 @@ const products: Product[] = [
     tags: ["Resistente", "Alta temperatura"],
     color: "violet",
     image: "/images/productos/poliuretano-header.jpg",
+    slug: "bandas-poliuretano",
   },
   {
     icon: Settings,
@@ -56,6 +61,7 @@ const products: Product[] = [
     tags: ["Transmisión", "Precisión"],
     color: "cyan",
     image: "/images/productos/correas-planas-header.jpg",
+    slug: "correas-planas",
   },
   {
     icon: Grip,
@@ -65,6 +71,7 @@ const products: Product[] = [
     tags: ["Repuestos", "Empalmes"],
     color: "teal",
     image: "/images/productos/grampas-header.jpg",
+    slug: "grampas",
   },
   {
     icon: GitBranch,
@@ -74,6 +81,7 @@ const products: Product[] = [
     tags: ["Sincrónico", "Sin deslizamiento"],
     color: "green",
     image: "/images/productos/transmision-header.jpg",
+    slug: "correas-posicionamiento",
   },
   {
     icon: Triangle,
@@ -83,6 +91,7 @@ const products: Product[] = [
     tags: ["Clásica", "Potencia"],
     color: "yellow",
     image: "/images/productos/transmision-03.jpg",
+    slug: "correas-transmision",
   },
   {
     icon: Wrench,
@@ -92,6 +101,7 @@ const products: Product[] = [
     tags: ["Mantenimiento", "Stock"],
     color: "orange",
     image: "/images/productos/transmision-02.jpg",
+    slug: "accesorios",
   },
 ];
 
@@ -106,7 +116,7 @@ const colorMap: Record<string, { bg: string; text: string; ring: string; tag: st
   orange: { bg: "bg-orange-50", text: "text-orange-600", ring: "ring-orange-100", tag: "bg-orange-50 text-orange-700" },
 };
 
-const WHATSAPP = "https://wa.me/5491100000000?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+const WHATSAPP = "https://wa.me/5491147175151?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
 
 export default function Products() {
   return (
@@ -132,8 +142,9 @@ export default function Products() {
             const c = colorMap[p.color];
             const Icon = p.icon;
             return (
-              <div
+              <Link
                 key={p.name}
+                href={`/productos/${p.slug}`}
                 className={`group relative flex flex-col rounded-2xl border bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ring-1 ${c.ring}`}
               >
                 {/* Product photo */}
@@ -158,7 +169,7 @@ export default function Products() {
                   <p className="text-sm text-slate-500 leading-relaxed flex-1">
                     {p.description}
                   </p>
-                  <div className="flex flex-wrap gap-1.5">
+                  <div className="flex flex-wrap gap-1.5 mb-1">
                     {p.tags.map((t) => (
                       <span
                         key={t}
@@ -168,8 +179,11 @@ export default function Products() {
                       </span>
                     ))}
                   </div>
+                  <span className={`text-xs font-semibold ${c.text} group-hover:underline`}>
+                    Ver modelos y catálogos →
+                  </span>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

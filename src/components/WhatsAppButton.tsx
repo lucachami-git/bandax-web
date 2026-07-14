@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-const WHATSAPP = "https://wa.me/5491100000000?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+const WHATSAPP = "https://wa.me/5491147175151?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
 
 export default function WhatsAppButton() {
   const [hovered, setHovered] = useState(false);
