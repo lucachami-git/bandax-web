@@ -2,8 +2,6 @@ import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
-import { CarritoProvider } from "@/lib/carrito-context";
-import CarritoPanel from "@/components/CarritoPanel";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +31,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0f172a",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -48,10 +46,7 @@ export default function RootLayout({
     <html lang="es" className={`${geist.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <ServiceWorkerRegistration />
-        <CarritoProvider>
-          {children}
-          <CarritoPanel />
-        </CarritoProvider>
+        {children}
       </body>
     </html>
   );

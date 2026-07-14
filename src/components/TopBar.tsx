@@ -18,12 +18,12 @@ function InstagramIcon() {
 
 export default function TopBar() {
   return (
-    <div className="fixed inset-x-0 top-0 z-50 bg-slate-600 border-b border-slate-500/40">
+    <div className="fixed inset-x-0 top-0 z-50 bg-slate-800 border-b border-slate-700/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-9 items-center justify-between">
           <a
             href="tel:+541147175151"
-            className="flex items-center gap-1.5 text-xs text-slate-100 hover:text-white transition-colors"
+            className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-white transition-colors"
           >
             <Phone size={13} />
             <span>TEL: 011 4717-5151</span>
@@ -35,7 +35,7 @@ export default function TopBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook de Bandax"
-              className="text-slate-200 hover:text-white transition-colors"
+              className="text-slate-400 hover:text-white transition-colors"
             >
               <FacebookIcon />
             </a>
@@ -44,7 +44,7 @@ export default function TopBar() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram de Bandax"
-              className="text-slate-200 hover:text-white transition-colors"
+              className="text-slate-400 hover:text-white transition-colors"
             >
               <InstagramIcon />
             </a>

@@ -29,21 +29,21 @@ const advantages = [
 
 export default function Advantages() {
   return (
-    <section id="ventajas" className="bg-slate-900 py-24 sm:py-32">
+    <section id="ventajas" className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left text */}
           <div>
-            <p className="text-sm font-semibold uppercase tracking-widest text-blue-400 mb-3">
+            <p className="text-sm font-semibold uppercase tracking-widest text-blue-600 mb-3">
               ¿Por qué Bandax?
             </p>
-            <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
               Más que un proveedor,{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-400">
+              <span className="text-blue-600">
                 un socio industrial
               </span>
             </h2>
-            <p className="mt-6 text-lg text-slate-400 leading-relaxed">
+            <p className="mt-6 text-lg text-slate-600 leading-relaxed">
               En Bandax combinamos décadas de experiencia con atención
               personalizada. Desde la consulta hasta la entrega, estamos con
               usted en cada paso del proceso.
@@ -55,8 +55,8 @@ export default function Advantages() {
                 { value: "8", label: "Líneas de productos" },
               ].map((s) => (
                 <div key={s.label}>
-                  <p className="text-3xl font-black text-white">{s.value}</p>
-                  <p className="mt-1 text-sm text-slate-400">{s.label}</p>
+                  <p className="text-3xl font-black text-slate-900">{s.value}</p>
+                  <p className="mt-1 text-sm text-slate-500">{s.label}</p>
                 </div>
               ))}
             </div>
@@ -69,13 +69,13 @@ export default function Advantages() {
               return (
                 <div
                   key={a.title}
-                  className="flex flex-col gap-4 rounded-2xl border border-slate-800 bg-slate-950 p-6 hover:border-blue-700/50 transition-colors"
+                  className="flex flex-col gap-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 hover:border-blue-300 hover:shadow-sm transition-all"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-600/10">
-                    <Icon size={22} className="text-blue-400" />
+                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50">
+                    <Icon size={22} className="text-blue-600" />
                   </div>
-                  <h3 className="font-bold text-white">{a.title}</h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <h3 className="font-bold text-slate-900">{a.title}</h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
                     {a.description}
                   </p>
                 </div>

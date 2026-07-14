@@ -19,7 +19,7 @@ const WHATSAPP = "https://wa.me/5491100000000?text=Hola%2C%20quisiera%20consulta
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 border-t border-slate-800">
+    <footer className="bg-white border-t border-slate-200">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
           {/* Brand */}
@@ -33,7 +33,7 @@ export default function Footer() {
                 className="h-9 w-auto object-contain"
               />
             </a>
-            <p className="text-sm text-slate-400 leading-relaxed">
+            <p className="text-sm text-slate-500 leading-relaxed">
               Soluciones industriales en bandas y correas de transmisión. Buenos
               Aires, Argentina.
             </p>
@@ -41,7 +41,7 @@ export default function Footer() {
               href={WHATSAPP}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-green-500/10 hover:bg-green-500/20 border border-green-500/20 px-4 py-2 text-sm font-semibold text-green-400 transition-colors"
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-green-50 hover:bg-green-100 border border-green-200 px-4 py-2 text-sm font-semibold text-green-700 transition-colors"
             >
               WhatsApp →
             </a>
@@ -49,7 +49,7 @@ export default function Footer() {
 
           {/* Products */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-4">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-800 mb-4">
               Productos
             </h4>
             <ul className="flex flex-col gap-2">
@@ -57,7 +57,7 @@ export default function Footer() {
                 <li key={p}>
                   <a
                     href="#productos"
-                    className="text-sm text-slate-500 hover:text-white transition-colors"
+                    className="text-sm text-slate-500 hover:text-slate-900 transition-colors"
                   >
                     {p}
                   </a>
@@ -68,7 +68,7 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-4">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-800 mb-4">
               Empresa
             </h4>
             <ul className="flex flex-col gap-2">
@@ -76,7 +76,7 @@ export default function Footer() {
                 <li key={l.href}>
                   <a
                     href={l.href}
-                    className="text-sm text-slate-500 hover:text-white transition-colors"
+                    className="text-sm text-slate-500 hover:text-slate-900 transition-colors"
                   >
                     {l.label}
                   </a>
@@ -87,7 +87,7 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-widest text-slate-400 mb-4">
+            <h4 className="text-xs font-semibold uppercase tracking-widest text-slate-800 mb-4">
               Contacto
             </h4>
             <ul className="flex flex-col gap-2 text-sm text-slate-500">
@@ -100,12 +100,12 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-slate-600">
+        <div className="mt-16 pt-8 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-slate-500">
             © {new Date().getFullYear()} Bandax Argentina. Todos los derechos
             reservados.
           </p>
-          <p className="text-xs text-slate-700">
+          <p className="text-xs text-slate-400">
             Bandas transportadoras · Correas de transmisión · Soluciones industriales
           </p>
         </div>

@@ -96,31 +96,31 @@ const products: Product[] = [
 ];
 
 const colorMap: Record<string, { bg: string; text: string; ring: string; tag: string }> = {
-  blue:   { bg: "bg-blue-500/10",   text: "text-blue-400",   ring: "ring-blue-500/20",   tag: "bg-blue-500/10 text-blue-300" },
-  indigo: { bg: "bg-indigo-500/10", text: "text-indigo-400", ring: "ring-indigo-500/20", tag: "bg-indigo-500/10 text-indigo-300" },
-  violet: { bg: "bg-violet-500/10", text: "text-violet-400", ring: "ring-violet-500/20", tag: "bg-violet-500/10 text-violet-300" },
-  cyan:   { bg: "bg-cyan-500/10",   text: "text-cyan-400",   ring: "ring-cyan-500/20",   tag: "bg-cyan-500/10 text-cyan-300" },
-  teal:   { bg: "bg-teal-500/10",   text: "text-teal-400",   ring: "ring-teal-500/20",   tag: "bg-teal-500/10 text-teal-300" },
-  green:  { bg: "bg-green-500/10",  text: "text-green-400",  ring: "ring-green-500/20",  tag: "bg-green-500/10 text-green-300" },
-  yellow: { bg: "bg-yellow-500/10", text: "text-yellow-400", ring: "ring-yellow-500/20", tag: "bg-yellow-500/10 text-yellow-300" },
-  orange: { bg: "bg-orange-500/10", text: "text-orange-400", ring: "ring-orange-500/20", tag: "bg-orange-500/10 text-orange-300" },
+  blue:   { bg: "bg-blue-50",   text: "text-blue-600",   ring: "ring-blue-100",   tag: "bg-blue-50 text-blue-700" },
+  indigo: { bg: "bg-indigo-50", text: "text-indigo-600", ring: "ring-indigo-100", tag: "bg-indigo-50 text-indigo-700" },
+  violet: { bg: "bg-violet-50", text: "text-violet-600", ring: "ring-violet-100", tag: "bg-violet-50 text-violet-700" },
+  cyan:   { bg: "bg-cyan-50",   text: "text-cyan-600",   ring: "ring-cyan-100",   tag: "bg-cyan-50 text-cyan-700" },
+  teal:   { bg: "bg-teal-50",   text: "text-teal-600",   ring: "ring-teal-100",   tag: "bg-teal-50 text-teal-700" },
+  green:  { bg: "bg-green-50",  text: "text-green-600",  ring: "ring-green-100",  tag: "bg-green-50 text-green-700" },
+  yellow: { bg: "bg-yellow-50", text: "text-yellow-600", ring: "ring-yellow-100", tag: "bg-yellow-50 text-yellow-700" },
+  orange: { bg: "bg-orange-50", text: "text-orange-600", ring: "ring-orange-100", tag: "bg-orange-50 text-orange-700" },
 };
 
 const WHATSAPP = "https://wa.me/5491100000000?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
 
 export default function Products() {
   return (
-    <section id="productos" className="bg-slate-950 py-24 sm:py-32">
+    <section id="productos" className="bg-slate-50 py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-400 mb-3">
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-600 mb-3">
             Nuestros Productos
           </p>
-          <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+          <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight">
             Todo lo que su línea necesita
           </h2>
-          <p className="mt-4 text-lg text-slate-400">
+          <p className="mt-4 text-lg text-slate-500">
             Más de 8 líneas de productos para cubrir cualquier necesidad
             industrial, con stock permanente y entrega express.
           </p>
@@ -134,7 +134,7 @@ export default function Products() {
             return (
               <div
                 key={p.name}
-                className={`group relative flex flex-col rounded-2xl border bg-slate-900 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ring-1 ${c.ring}`}
+                className={`group relative flex flex-col rounded-2xl border bg-white overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-lg ring-1 ${c.ring}`}
               >
                 {/* Product photo */}
                 <div className="relative h-44 overflow-hidden">
@@ -145,17 +145,17 @@ export default function Products() {
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent" />
-                  <div className={`absolute bottom-3 left-3 flex h-9 w-9 items-center justify-center rounded-lg ${c.bg}`}>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
+                  <div className={`absolute bottom-3 left-3 flex h-9 w-9 items-center justify-center rounded-lg ${c.bg} shadow-sm`}>
                     <Icon size={18} className={c.text} />
                   </div>
                 </div>
 
                 <div className="flex flex-col gap-3 p-5 flex-1">
-                  <h3 className="text-base font-bold text-white leading-snug">
+                  <h3 className="text-base font-bold text-slate-900 leading-snug">
                     {p.name}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed flex-1">
+                  <p className="text-sm text-slate-500 leading-relaxed flex-1">
                     {p.description}
                   </p>
                   <div className="flex flex-wrap gap-1.5">

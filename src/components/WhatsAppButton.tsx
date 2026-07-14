@@ -18,7 +18,7 @@ export default function WhatsAppButton() {
       className="fixed bottom-6 right-6 z-50 flex items-center gap-3 group"
     >
       {hovered && (
-        <span className="rounded-xl bg-slate-900 px-3 py-2 text-sm font-medium text-white shadow-lg whitespace-nowrap border border-slate-700">
+        <span className="rounded-xl bg-white border border-slate-200 shadow-md px-3 py-2 text-sm font-medium text-slate-800 whitespace-nowrap">
           Consultar por WhatsApp
         </span>
       )}
