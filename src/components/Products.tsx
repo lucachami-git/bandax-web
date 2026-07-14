@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   Layers,
   Grid3X3,
@@ -16,6 +17,7 @@ interface Product {
   description: string;
   tags: string[];
   color: string;
+  image: string;
 }
 
 const products: Product[] = [
@@ -26,6 +28,7 @@ const products: Product[] = [
       "Para industria alimenticia, logística y manufactura. Alta resistencia, fácil higienización y larga vida útil.",
     tags: ["Alimenticia", "Logística", "Manufactura"],
     color: "blue",
+    image: "/images/productos/transportadoras-header.jpg",
   },
   {
     icon: Grid3X3,
@@ -34,6 +37,7 @@ const products: Product[] = [
       "Sistema modular de fácil reemplazo por tramo. Ideal para líneas de producción con curvas y elevaciones.",
     tags: ["Modular", "Fácil reemplazo"],
     color: "indigo",
+    image: "/images/hero/hero-2.jpg",
   },
   {
     icon: Zap,
@@ -42,6 +46,7 @@ const products: Product[] = [
       "Alta resistencia química y mecánica. Perfectas para entornos húmedos, aceites y temperaturas extremas.",
     tags: ["Resistente", "Alta temperatura"],
     color: "violet",
+    image: "/images/productos/poliuretano-header.jpg",
   },
   {
     icon: Settings,
@@ -50,6 +55,7 @@ const products: Product[] = [
       "Transmisión de potencia eficiente con mínima vibración. Disponibles en múltiples anchos y largos.",
     tags: ["Transmisión", "Precisión"],
     color: "cyan",
+    image: "/images/productos/correas-planas-header.jpg",
   },
   {
     icon: Grip,
@@ -58,6 +64,7 @@ const products: Product[] = [
       "Conectores, grapas y empalmes para bandas de todo tipo. Repuestos originales con entrega inmediata.",
     tags: ["Repuestos", "Empalmes"],
     color: "teal",
+    image: "/images/productos/grampas-header.jpg",
   },
   {
     icon: GitBranch,
@@ -66,6 +73,7 @@ const products: Product[] = [
       "Transmisión sincrónica sin deslizamiento. Para aplicaciones que requieren posicionamiento exacto.",
     tags: ["Sincrónico", "Sin deslizamiento"],
     color: "green",
+    image: "/images/productos/transmision-header.jpg",
   },
   {
     icon: Triangle,
@@ -74,6 +82,7 @@ const products: Product[] = [
       "La solución clásica para transmisión de potencia. Disponibles en todos los perfiles estándar.",
     tags: ["Clásica", "Potencia"],
     color: "yellow",
+    image: "/images/productos/transmision-03.jpg",
   },
   {
     icon: Wrench,
@@ -82,6 +91,7 @@ const products: Product[] = [
       "Poleas, tensores, rodamientos y accesorios para el mantenimiento completo de su línea de producción.",
     tags: ["Mantenimiento", "Stock"],
     color: "orange",
+    image: "/images/productos/transmision-02.jpg",
   },
 ];
 
@@ -124,32 +134,40 @@ export default function Products() {
             return (
               <div
                 key={p.name}
-                className={`group relative flex flex-col gap-4 rounded-2xl border bg-slate-900 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ring-1 ${c.ring}`}
+                className={`group relative flex flex-col rounded-2xl border bg-slate-900 overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ring-1 ${c.ring}`}
               >
-                <div
-                  className={`flex h-11 w-11 items-center justify-center rounded-xl ${c.bg}`}
-                >
-                  <Icon size={22} className={c.text} />
+                {/* Product photo */}
+                <div className="relative h-44 overflow-hidden">
+                  <Image
+                    src={p.image}
+                    alt={p.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 to-transparent" />
+                  <div className={`absolute bottom-3 left-3 flex h-9 w-9 items-center justify-center rounded-lg ${c.bg}`}>
+                    <Icon size={18} className={c.text} />
+                  </div>
                 </div>
 
-                <div className="flex-1">
-                  <h3 className="text-base font-bold text-white leading-snug mb-2">
+                <div className="flex flex-col gap-3 p-5 flex-1">
+                  <h3 className="text-base font-bold text-white leading-snug">
                     {p.name}
                   </h3>
-                  <p className="text-sm text-slate-400 leading-relaxed">
+                  <p className="text-sm text-slate-400 leading-relaxed flex-1">
                     {p.description}
                   </p>
-                </div>
-
-                <div className="flex flex-wrap gap-1.5">
-                  {p.tags.map((t) => (
-                    <span
-                      key={t}
-                      className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${c.tag}`}
-                    >
-                      {t}
-                    </span>
-                  ))}
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tags.map((t) => (
+                      <span
+                        key={t}
+                        className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${c.tag}`}
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               </div>
             );

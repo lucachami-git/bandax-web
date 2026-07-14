@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowRight, CheckCircle } from "lucide-react";
 
 const WHATSAPP =
@@ -15,8 +16,17 @@ export default function Hero() {
       id="inicio"
       className="relative min-h-screen flex items-center overflow-hidden bg-slate-900"
     >
-      {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-blue-950" />
+      {/* Background photo */}
+      <Image
+        src="/images/hero/hero-1.jpg"
+        alt="Instalación industrial de bandas transportadoras Bandax"
+        fill
+        className="object-cover"
+        priority
+      />
+
+      {/* Background gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-slate-900/85 to-blue-950/90" />
 
       {/* Grid pattern overlay */}
       <div

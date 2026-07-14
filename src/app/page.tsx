@@ -1,6 +1,7 @@
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
+import Brands from "@/components/Brands";
 import Products from "@/components/Products";
 import Advantages from "@/components/Advantages";
 import AboutUs from "@/components/AboutUs";
@@ -16,6 +17,7 @@ export default function Home() {
       <Header />
       <main>
         <Hero />
+        <Brands />
         <Products />
         <Advantages />
         <AboutUs />
