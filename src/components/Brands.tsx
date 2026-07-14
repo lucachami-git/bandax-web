@@ -8,7 +8,7 @@ const brands = [
 
 export default function Brands() {
   return (
-    <section className="bg-white py-12 border-y border-slate-100">
+    <section className="py-12 border-y border-slate-200/60">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-400 mb-10">
           Marcas líderes que representamos

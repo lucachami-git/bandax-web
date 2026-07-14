@@ -118,6 +118,7 @@ export const productos: ProductoDetalle[] = [
       },
     ],
     catalogs: [
+      { name: "Manual Técnico ScanBelt 2022", url: "/catalogs/scanbelt-manual-tecnico.pdf", description: "Manual técnico completo: todos los modelos, especificaciones y dimensiones (650 páginas)" },
       { name: "ScanBelt Brochure", url: "https://www.bandax.com/old/wp-content/uploads/2017/02/SCANBELT-Brochure.pdf", description: "Brochure general de productos ScanBelt" },
       { name: "Catálogo Técnico ScanBelt", url: "https://www.bandax.com/old/wp-content/uploads/2017/02/SCANBELT-CatalogoTecnico.pdf", description: "Especificaciones técnicas completas" },
       { name: "Industria Pesquera", url: "https://www.bandax.com/old/wp-content/uploads/2017/02/SCANBELT-SeafoodIndustry.pdf", description: "Aplicaciones en industria pesquera y mariscos" },
@@ -125,7 +126,6 @@ export const productos: ProductoDetalle[] = [
     videos: [
       { title: "Correas modulares para procesos de transporte", youtubeId: "Ac6Yqu58BdA" },
       { title: "Aplicaciones en industria pesquera", youtubeId: "gkZQ8vR78wc" },
-      { title: "Procesamiento de mariscos", youtubeId: "ERqqq6WHMKU" },
     ],
     industries: ["Alimenticia", "Pesquera", "Logística", "Empaque"],
   },

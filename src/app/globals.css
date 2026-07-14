@@ -53,3 +53,14 @@ body {
 .animate-fade-in {
   animation: fade-in 0.8s ease both;
 }
+
+/* Fondo con manchas de color — mismo efecto que el ERP Bandax */
+.bx-fondo {
+  background-color: #f8fafc;
+  background-attachment: fixed;
+  background-image:
+    radial-gradient(ellipse 36rem 36rem at -4rem -6rem, rgba(56, 189, 248, 0.40), transparent 64%),
+    radial-gradient(ellipse 30rem 34rem at -6rem 50%, rgba(129, 140, 248, 0.32), transparent 64%),
+    radial-gradient(ellipse 34rem 34rem at 110% -4rem, rgba(103, 232, 249, 0.28), transparent 64%),
+    radial-gradient(ellipse 28rem 28rem at 110% 95%, rgba(147, 197, 253, 0.22), transparent 64%);
+}

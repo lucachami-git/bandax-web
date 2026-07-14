@@ -31,7 +31,7 @@ export default function Header() {
       className={`fixed inset-x-0 top-9 z-40 transition-all duration-300 ${
         scrolled
           ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200/80"
-          : "bg-gradient-to-b from-black/40 to-transparent"
+          : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -54,11 +54,7 @@ export default function Header() {
               <a
                 key={l.href}
                 href={l.href}
-                className={`text-sm font-medium transition-colors ${
-                  scrolled
-                    ? "text-slate-700 hover:text-slate-900"
-                    : "text-white/90 hover:text-white"
-                }`}
+                className="text-sm font-medium text-slate-700 hover:text-slate-900 transition-colors"
               >
                 {l.label}
               </a>
@@ -81,7 +77,7 @@ export default function Header() {
           {/* Mobile toggle */}
           <div className="md:hidden">
             <button
-              className={`p-2 ${scrolled ? "text-slate-700" : "text-white"}`}
+              className="p-2 text-slate-700"
               onClick={() => setOpen(!open)}
               aria-label="Menú"
             >

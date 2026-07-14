@@ -29,7 +29,7 @@ const advantages = [
 
 export default function Advantages() {
   return (
-    <section id="ventajas" className="bg-white py-24 sm:py-32">
+    <section id="ventajas" className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left text */}
