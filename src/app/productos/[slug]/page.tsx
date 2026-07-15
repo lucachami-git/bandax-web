@@ -45,7 +45,7 @@ export default async function ProductoPage({ params }: Props) {
         />
         <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/65 to-slate-900/20" />
 
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-32 pb-16 h-full flex flex-col" style={{ minHeight: "55vh" }}>
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16 h-full flex flex-col" style={{ minHeight: "55vh" }}>
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-sm text-white/55">
             <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
