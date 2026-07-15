@@ -35,39 +35,46 @@ export default async function ProductoPage({ params }: Props) {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
-      <section className="relative overflow-hidden bg-slate-900" style={{ minHeight: "55vh" }}>
-        <Image
-          src={product.heroImage}
-          alt={product.name}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/65 to-slate-900/20" />
-
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-24 pb-16 h-full flex flex-col" style={{ minHeight: "55vh" }}>
+      <section className="relative overflow-hidden bg-gradient-to-b from-slate-50 to-white border-b border-slate-200/60">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-28 pb-14 sm:pb-16">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-sm text-white/55">
-            <Link href="/" className="hover:text-white transition-colors">Inicio</Link>
+          <nav className="flex items-center gap-2 text-sm text-slate-400">
+            <Link href="/" className="hover:text-slate-700 transition-colors">Inicio</Link>
             <span>/</span>
-            <Link href="/#productos" className="hover:text-white transition-colors">Productos</Link>
+            <Link href="/#productos" className="hover:text-slate-700 transition-colors">Productos</Link>
             <span>/</span>
-            <span className="text-white/80">{product.name}</span>
+            <span className="text-slate-600">{product.name}</span>
           </nav>
 
-          {/* Title block at bottom of hero */}
-          <div className="mt-auto pt-10">
-            {product.brand && (
-              <p className="text-sm font-semibold uppercase tracking-widest text-blue-300 mb-2">
-                {product.brand}
+          <div className="mt-10 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+            {/* Title block */}
+            <div>
+              {product.brand && (
+                <p className="text-sm font-semibold uppercase tracking-widest text-blue-600 mb-3">
+                  {product.brand}
+                </p>
+              )}
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-tight">
+                {product.name}
+              </h1>
+              <p className="mt-4 text-lg text-slate-600 max-w-xl leading-relaxed">
+                {product.shortDescription}
               </p>
-            )}
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight max-w-2xl">
-              {product.name}
-            </h1>
-            <p className="mt-4 text-lg text-white/75 max-w-xl leading-relaxed">
-              {product.shortDescription}
-            </p>
+            </div>
+
+            {/* Photo */}
+            <div
+              className="relative rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl shadow-blue-900/10 ring-1 ring-slate-900/5"
+              style={{ aspectRatio: "16/10" }}
+            >
+              <Image
+                src={product.heroImage}
+                alt={product.name}
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
