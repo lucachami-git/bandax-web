@@ -23,6 +23,8 @@ const industrias = [
 ];
 
 const WHATSAPP = "https://wa.me/5491159041115?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+// Access key de Web3Forms — pública por diseño (envía a bandax@bandax.com).
+const WEB3FORMS_ACCESS_KEY = "5cf76fba-d509-458c-8833-ac09e98c1ccc";
 const DIRECCION = "Edison 2439, Martínez, Buenos Aires";
 const MAPS_URL =
   "https://www.google.com/maps/search/?api=1&query=Edison+2439,+Martinez,+Buenos+Aires,+Argentina";
@@ -44,15 +46,36 @@ export default function Contact() {
     setSending(true);
     setError(null);
     try {
-      const res = await fetch("/api/contacto", {
+      // 1) Email a bandax@bandax.com — Web3Forms exige envío desde el cliente.
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          from_name: "Bandax Web",
+          subject: `Nueva consulta web de ${form.nombre}${form.empresa ? ` (${form.empresa})` : ""}`,
+          replyto: form.email,
+          Nombre: form.nombre,
+          Email: form.email,
+          Teléfono: form.telefono || "-",
+          Empresa: form.empresa || "-",
+          Industria: form.industria || "-",
+          Provincia: form.provincia || "-",
+          Mensaje: form.mensaje,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.success) {
+        throw new Error(data.message || "No pudimos enviar la consulta.");
+      }
+
+      // 2) Reenvío al ERP en segundo plano (no bloquea ni frena si falla).
+      fetch("/api/contacto", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.ok) {
-        throw new Error(data.error || "No pudimos enviar la consulta.");
-      }
+      }).catch(() => {});
+
       setSent(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : "No pudimos enviar la consulta.");
