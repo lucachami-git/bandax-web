@@ -2,6 +2,7 @@ export interface ProductModel {
   name: string;
   description: string;
   applications?: string[];
+  image?: string;
 }
 
 export interface ProductCatalog {
@@ -43,31 +44,37 @@ export const productos: ProductoDetalle[] = [
     models: [
       {
         name: "Bandas de PVC",
+        image: "/images/productos/lineas/transportadoras-pvc.png",
         description: "Alta resistencia a grasas, aceites, químicos y temperaturas hasta 110°C. Disponibles en múltiples revestimientos y espesores.",
         applications: ["Industria láctea", "Bebidas", "Agricultura"],
       },
       {
         name: "Bandas de Poliuretano",
+        image: "/images/productos/lineas/transportadoras-poliuretano.png",
         description: "Permiten giros en filo de cuchilla, estabilidad lateral y cobertura antibacterial. Óptimas para procesos que requieren precisión.",
         applications: ["Logística", "Neumático", "Automotriz"],
       },
       {
         name: "Bandas de Silicona",
+        image: "/images/productos/lineas/transportadoras-silicona.png",
         description: "Recubrimiento en 1 y 2 telas, con propiedades antiadherentes. Rango de temperatura de -40°C a +150°C.",
         applications: ["Industria del dulce", "Altas temperaturas"],
       },
       {
         name: "Bandas Tejidas Sin Recubrimiento",
+        image: "/images/productos/lineas/transportadoras-tejidas.png",
         description: "Doble impregnación de poliuretano para mayor resistencia. Ideales para panificados industriales y neumático.",
         applications: ["Panificados", "Neumático"],
       },
       {
         name: "Bandas de Poliolefina",
+        image: "/images/productos/lineas/transportadoras-poliolefina.png",
         description: "Atóxicas, con cumplimiento de normativa FDA y UE. Especiales para industria del tabaco y alimenticia de alta exigencia.",
         applications: ["Tabaco", "Alimenticia FDA/EU"],
       },
       {
         name: "Accesorios para Bandas",
+        image: "/images/productos/lineas/transportadoras-accesorios.jpg",
         description: "Perfiles guías trapezoidales en PVC y poliuretano, tacos de arrastre por alta frecuencia y bordes laterales ondulados de 30-50 mm.",
         applications: ["Guías", "Perfiles", "Bordes"],
       },
@@ -98,21 +105,25 @@ export const productos: ProductoDetalle[] = [
     models: [
       {
         name: "S101 de Polipropileno Azul",
+        image: "/images/productos/lineas/modulares-s101-pp.png",
         description: "Banda radial modular doble línea. Mantiene posición durante curvas para rebanado automático. Permite enfriar y transportar panes de hamburguesas y productos similares.",
         applications: ["Panificados", "Rebanado automático", "Enfriado"],
       },
       {
         name: "S101 POM Azul",
+        image: "/images/productos/lineas/modulares-s101-pom.png",
         description: "Sistema de baja fricción antiadherente con giro freezer radial. Especial para congelado y transporte de langostinos y mariscos.",
         applications: ["Congelado", "Empaque", "Mariscos"],
       },
       {
         name: "S.50-808 Easy Clean",
+        image: "/images/productos/lineas/modulares-s50-808.png",
         description: "Sistema bermellón para fritador de papas bastón. Material resistente al impacto que soporta cortes repetitivos con fácil limpieza.",
         applications: ["Fritura", "Corte", "Procesamiento"],
       },
       {
         name: "S.25-800",
+        image: "/images/productos/lineas/modulares-s25-800.png",
         description: "Diseñadas para productos empacados en finales de línea. Fáciles de limpiar y resistentes a la abrasión, mantienen el engranaje ideal para etiquetado.",
         applications: ["Finales de línea", "Empaque", "Etiquetado"],
       },
@@ -140,31 +151,37 @@ export const productos: ProductoDetalle[] = [
     models: [
       {
         name: "Bandas para Contacto Directo con Alimentos",
+        image: "/images/productos/lineas/poliuretano-contacto-alimentos.png",
         description: "Diseñadas para reducir el riesgo de contaminación microbiana. Ideales para el transporte de carne molida y productos cárnicos.",
         applications: ["Carne", "Procesamiento de alimentos"],
       },
       {
         name: "Bandas de Tracción Positiva",
+        image: "/images/productos/lineas/poliuretano-traccion-positiva.png",
         description: "Construcción con dientes que mejoran la distribución del torque, con refuerzos de Kevlar® para mayor durabilidad.",
         applications: ["Transporte a granel", "Alimentos"],
       },
       {
         name: "Bandas Drenadoras",
+        image: "/images/productos/lineas/poliuretano-drenadoras.png",
         description: "Fabricadas con uretano grado Éter que mejora la resistencia al agua. Perfectas para el transporte de frutas y verduras que requieren drenaje.",
         applications: ["Frutas", "Verduras", "Drenaje"],
       },
       {
         name: "Bandas con Empujadores y Bordes Ondulados",
+        image: "/images/productos/lineas/poliuretano-empujadores.png",
         description: "Permiten transportar productos en planos inclinados sin que resbalen. Especiales para pastas frescas y productos delicados.",
         applications: ["Pastas frescas", "Planos inclinados"],
       },
       {
         name: "Transportadores Acanalados",
+        image: "/images/productos/lineas/poliuretano-acanalados.png",
         description: "Para equipos de más de 1,5 metros. Diseño acanalado que facilita la limpieza profunda y el transporte de pastas frescas.",
         applications: ["Pastas frescas", "Fácil limpieza"],
       },
       {
         name: "Sistema de Grampas PosiLace",
+        image: "/images/productos/lineas/poliuretano-posilace.png",
         description: "Alternativa mecánica al empalme en caliente. Permite armado y desarmado rápido sin herramientas especiales.",
         applications: ["Empalme mecánico", "Mantenimiento rápido"],
       },
@@ -189,31 +206,37 @@ export const productos: ProductoDetalle[] = [
     models: [
       {
         name: "Correas para Industria Gráfica",
+        image: "/images/productos/lineas/planas-grafica.png",
         description: "Alta resistencia al desgarre, abrasión y sobrecargas. Compatibles con rotativas, offset, stackers, plegadoras y encuadernadoras.",
         applications: ["Rotativas", "Offset", "Plegadora", "Encuadernadora"],
       },
       {
         name: "Correas para Plegadoras/Pegadoras",
+        image: "/images/productos/lineas/planas-plegadoras.png",
         description: "Disponibles en espesores de 3, 4 y 6 mm con caucho especialmente formulado para el proceso de pegado de cartón.",
         applications: ["Plegadoras", "Pegadoras de cartón"],
       },
       {
         name: "Correas para Formadoras de Tubos",
+        image: "/images/productos/lineas/planas-formadoras.png",
         description: "Espesores de 3 y 4 mm. El compuesto resiste hasta 5 veces más al desgarre que las correas convencionales.",
         applications: ["Formadoras de tubos", "Empaques"],
       },
       {
         name: "Correas para Bobinadoras/Desbobinadoras",
+        image: "/images/productos/lineas/planas-bobinadoras.png",
         description: "Disponibles cerradas sin fin, con extremos preparados o con empalme en planta para mayor versatilidad operativa.",
         applications: ["Bobinadoras", "Desbobinadoras"],
       },
       {
         name: "Correas para Offset",
+        image: "/images/productos/lineas/planas-offset.png",
         description: "Servicio de empalme en planta y entrega express en 24 hs. Mínima vibración para impresión de alta calidad.",
         applications: ["Impresión offset", "Entrega 24hs"],
       },
       {
         name: "Correas para Industria del Cartón",
+        image: "/images/productos/lineas/planas-carton.png",
         description: "Superficie rugosa y coeficiente de fricción estable para el manejo de cajas y cartón corrugado.",
         applications: ["Cartón corrugado", "Packaging"],
       },
@@ -246,16 +269,19 @@ export const productos: ProductoDetalle[] = [
     models: [
       {
         name: "Grampas Clipper Plásticas",
+        image: "/images/productos/grampas-01.png",
         description: "Solución económica y de fácil instalación para bandas livianas. Disponibles en diferentes tamaños para distintos espesores de banda.",
         applications: ["Bandas livianas", "Alimenticia", "General"],
       },
       {
         name: "Alligator Staple Gold Class Plus",
+        image: "/images/productos/grampas-02.png",
         description: "Sistema de empalme metálico de alta resistencia con herramienta dedicada. Para bandas de alto tonelaje y aplicaciones industriales exigentes.",
         applications: ["Alta resistencia", "Industria pesada"],
       },
       {
         name: "Prensa Novitool® Aero®",
+        image: "/images/productos/grampas-03.png",
         description: "Prensa portátil neumática para instalación rápida y precisa de grampas. Reduce el tiempo de empalme y garantiza resultados uniformes.",
         applications: ["Empalme rápido", "Portátil", "Neumática"],
       },
@@ -275,21 +301,25 @@ export const productos: ProductoDetalle[] = [
     models: [
       {
         name: "Pasos Métricos — T y AT",
+        image: "/images/productos/lineas/posicionamiento-metricos.png",
         description: "Disponibles en pasos T2.5, T5, T10, T20, AT3, AT5, AT10 y AT20. Anchos hasta 450 mm, velocidades hasta 60 m/s. Configuración abierta o cerrada sin fin.",
         applications: ["Posicionamiento lineal", "Automatización"],
       },
       {
         name: "Pasos Industriales — 3M a 14M",
+        image: "/images/productos/lineas/posicionamiento-industriales.png",
         description: "Pasos 3M, 5M, 8M, 14M, S5M y S8M para aplicaciones de mayor carga. Refuerzos de acero o Kevlar según requerimiento.",
         applications: ["Transmisión industrial", "Alta carga"],
       },
       {
         name: "Pasos Pulgadas — XL, L, H, XH",
+        image: "/images/productos/lineas/posicionamiento-pulgadas.png",
         description: "Pasos MXL, XL, L, H y XH para compatibilidad con maquinaria estándar americana. Todos disponibles con o sin recubrimiento.",
         applications: ["Maquinaria americana", "Estándar imperial"],
       },
       {
         name: "Recubrimientos Especiales",
+        image: "/images/productos/lineas/posicionamiento-recubrimientos.png",
         description: "Las correas admiten múltiples recubrimientos: caucho natural, PVC, poliuretano en distintas durezas (75°-92° Shore A), silicona y antiestático.",
         applications: ["Antiestático", "Silicona", "PVC"],
       },
@@ -309,21 +339,25 @@ export const productos: ProductoDetalle[] = [
     models: [
       {
         name: "Rib Ace",
+        image: "/images/productos/lineas/transmision-rib-ace.jpg",
         description: "Correa de espesor reducido con flexibilidad particularmente alta. Relaciones de transmisión de hasta 40:1, bajo nivel de ruido. Supera en más del 50% el rendimiento de correas convencionales.",
         applications: ["Alta eficiencia", "Bajo ruido", "Compacto"],
       },
       {
         name: "Super Torque — STS y HPS",
+        image: "/images/productos/lineas/transmision-super-torque.jpg",
         description: "Diseñadas para exigencias muy altas en transmisión de potencia, funcionamiento y precisión. Las líneas STS y HPS son la elección para aplicaciones críticas.",
         applications: ["Alta potencia", "Precisión", "Aplicaciones críticas"],
       },
       {
         name: "Power Ace",
+        image: "/images/productos/lineas/transmision-power-ace.jpg",
         description: "Correas angostas que ocupan menos espacio que los modelos clásicos y ofrecen mayor capacidad de transmisión mediante perfiles optimizados y materiales de alta calidad.",
         applications: ["Compacto", "Alta capacidad"],
       },
       {
         name: "Clásicas — DIN 2215 / ISO 4184",
+        image: "/images/productos/lineas/transmision-clasicas.jpg",
         description: "Correas trapezoidales estándar conforme a normas DIN 2215 e ISO 4184. Aplicables a distintos sectores industriales y agrícolas con total interoperabilidad.",
         applications: ["Industrial", "Agrícola", "Estándar DIN/ISO"],
       },
