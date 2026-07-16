@@ -91,7 +91,7 @@ export default function Footer() {
               Contacto
             </h4>
             <ul className="flex flex-col gap-2 text-sm text-slate-500">
-              <li>info@bandax.com</li>
+              <li>bandax@bandax.com</li>
               <li>Buenos Aires, Argentina</li>
               <li className="pt-1">
                 Entrega local inmediata · Envíos a todo el país
