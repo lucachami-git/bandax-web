@@ -37,86 +37,71 @@ export default function Hero() {
 
   return (
     <section id="inicio" className="bg-white pt-20">
-      {/* Banner ancho y bajo: la imagen se ve entera (object-contain) */}
+      {/* Banner ancho y bajo, imagen de punta a punta */}
       <div className="relative w-full overflow-hidden bg-slate-900 h-[440px] sm:h-[520px] lg:h-[600px]">
         {slides.map((src, i) => (
-          <div
+          <Image
             key={src}
-            className={`absolute inset-0 transition-opacity duration-700 ${
+            src={src}
+            alt="Soluciones industriales de bandas y correas Bandax"
+            fill
+            className={`object-cover transition-opacity duration-700 ${
               i === index ? "opacity-100" : "opacity-0"
             }`}
+            sizes="100vw"
+            priority={i === 0}
             aria-hidden={i !== index}
-          >
-            {/* Fondo borroso que rellena los bordes sin recortar la foto */}
-            <Image
-              src={src}
-              alt=""
-              fill
-              className="object-cover scale-110 blur-2xl opacity-40"
-              sizes="100vw"
-              priority={i === 0}
-            />
-            {/* Imagen completa, sin zoom ni recorte */}
-            <Image
-              src={src}
-              alt="Soluciones industriales de bandas y correas Bandax"
-              fill
-              style={{ objectFit: "contain" }}
-              sizes="100vw"
-              priority={i === 0}
-            />
-          </div>
+          />
         ))}
 
-        {/* Degradado para legibilidad del texto */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/55 to-transparent pointer-events-none" />
+        {/* Scrim oscuro para legibilidad del texto centrado */}
+        <div className="absolute inset-0 bg-slate-900/55 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-slate-900/30 pointer-events-none" />
 
-        {/* Texto */}
-        <div className="relative h-full mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 flex items-center">
-          <div className="max-w-xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-200 mb-6">
-              <span className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
-              30 años de experiencia industrial
-            </div>
+        {/* Texto centrado */}
+        <div className="relative h-full mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
+          <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-200 mb-6">
+            <span className="h-2 w-2 rounded-full bg-blue-400 animate-pulse" />
+            30 años de experiencia industrial
+          </div>
 
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.05]">
-              Soluciones{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                para industrias
-              </span>
-            </h1>
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.05]">
+            Soluciones{" "}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
+              para industrias
+            </span>
+          </h1>
 
-            <p className="mt-5 text-base sm:text-lg text-white/75 leading-relaxed max-w-md">
-              Bandas transportadoras, modulares, de poliuretano y correas de
-              transmisión para la industria alimenticia, logística y manufactura.
-            </p>
+          <p className="mt-5 text-base sm:text-lg text-white/80 leading-relaxed max-w-xl">
+            Bandas transportadoras, modulares, de poliuretano y correas de
+            transmisión para la industria alimenticia, logística y manufactura.
+          </p>
 
-            <ul className="mt-6 hidden sm:flex flex-col gap-2">
-              {highlights.map((h) => (
-                <li key={h} className="flex items-center gap-3 text-white/85 text-sm">
-                  <CheckCircle size={16} className="text-blue-400 shrink-0" />
-                  <span>{h}</span>
-                </li>
-              ))}
-            </ul>
+          <ul className="mt-6 hidden sm:flex flex-wrap justify-center gap-x-6 gap-y-2">
+            {highlights.map((h) => (
+              <li key={h} className="flex items-center gap-2 text-white/85 text-sm">
+                <CheckCircle size={16} className="text-blue-400 shrink-0" />
+                <span>{h}</span>
+              </li>
+            ))}
+          </ul>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <a
-                href="#productos"
-                className="inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-500 px-7 py-3.5 text-base font-semibold text-white transition-all shadow-lg shadow-blue-900/40 hover:-translate-y-0.5"
-              >
-                Ver productos
-                <ArrowRight size={18} />
-              </a>
-              <a
-                href={WHATSAPP}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 hover:bg-white/10 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5"
-              >
-                Pedir presupuesto
-              </a>
-            </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href="#productos"
+              className="inline-flex items-center gap-2 rounded-full bg-blue-600 hover:bg-blue-500 px-7 py-3.5 text-base font-semibold text-white transition-all shadow-lg shadow-blue-900/40 hover:-translate-y-0.5"
+            >
+              Ver productos
+              <ArrowRight size={18} />
+            </a>
+            <a
+              href={WHATSAPP}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 hover:bg-white/10 px-7 py-3.5 text-base font-semibold text-white backdrop-blur-sm transition-all hover:-translate-y-0.5"
+            >
+              Pedir presupuesto
+            </a>
           </div>
         </div>
 
