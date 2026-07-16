@@ -3,7 +3,7 @@
  * La web no tiene DB propia — consulta los productos directamente al ERP.
  */
 
-const ERP_BASE = process.env.ERP_API_URL ?? "https://bandax-erp.vercel.app";
+export const ERP_BASE = process.env.ERP_API_URL ?? "https://bandax-erp.vercel.app";
 
 export interface ProductoAPI {
   id:             string;
@@ -56,6 +56,39 @@ export async function getProducto(codigo: string): Promise<ProductoAPI | null> {
     return data.productos.find((p) => p.codigo === codigo) ?? null;
   } catch {
     return null;
+  }
+}
+
+// ─── Consultas Web ────────────────────────────────────────
+// Envía cada consulta del formulario de contacto al módulo "Consultas Web"
+// del ERP (POST /api/public/consultas).
+export interface ConsultaWebInput {
+  nombre: string;
+  email?: string;
+  telefono?: string;
+  empresa?: string;
+  industria?: string;
+  provincia?: string;
+  mensaje: string;
+}
+
+export async function enviarConsultaWeb(input: ConsultaWebInput): Promise<boolean> {
+  try {
+    const res = await fetch(`${ERP_BASE}/api/public/consultas`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Secreto opcional: solo se envía si está configurado en ambos lados.
+        ...(process.env.CONSULTAS_WEB_SECRET
+          ? { "x-api-secret": process.env.CONSULTAS_WEB_SECRET }
+          : {}),
+      },
+      body: JSON.stringify({ ...input, origen: "web" }),
+    });
+    return res.ok;
+  } catch (e) {
+    console.error("[erp-api] enviarConsultaWeb:", e);
+    return false;
   }
 }
 
