@@ -58,9 +58,6 @@ export default function Hero() {
         <div className="absolute inset-0 bg-slate-900/55 pointer-events-none" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-slate-900/30 pointer-events-none" />
 
-        {/* Difuminado superior: la imagen emerge suavemente de la barra */}
-        <div className="absolute inset-x-0 top-0 h-24 sm:h-28 bg-gradient-to-b from-white via-white/60 to-transparent pointer-events-none" />
-
         {/* Texto centrado */}
         <div className="relative h-full mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-4 py-1.5 text-sm font-medium text-blue-200 mb-6">

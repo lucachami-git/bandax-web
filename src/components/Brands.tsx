@@ -2,13 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 
 const brands = [
-  { name: "Yongli Belting",  src: "/images/marcas/yongli-new.png", width: 170, height: 45, href: "/productos/bandas-transportadoras" },
-  { name: "ScanBelt",        src: "/images/marcas/scanbelt.jpg",   width: 150, height: 38, href: "/productos/bandas-modulares" },
-  { name: "Gates TPU Belts", src: "/images/marcas/gates-tpu.jpeg", width: 185, height: 32, href: "/productos/bandas-poliuretano" },
-  { name: "Mafdel",          src: "/images/marcas/mafdel.jpg",     width: 62,  height: 80, href: null },
-  { name: "Nitta",           src: "/images/marcas/nitta.png",      width: 105, height: 55, href: "/productos/correas-planas" },
-  { name: "Bando",           src: "/images/marcas/bando.jpg",      width: 90,  height: 48, href: "/productos/correas-transmision" },
-  { name: "Flexco",          src: "/images/marcas/flexco.png",     width: 155, height: 36, href: "/productos/grampas" },
+  { name: "Yongli Belting",  src: "/images/marcas/yongli-new.png", width: 130, height: 34, href: "/productos/bandas-transportadoras" },
+  { name: "ScanBelt",        src: "/images/marcas/scanbelt.jpg",   width: 115, height: 29, href: "/productos/bandas-modulares" },
+  { name: "Gates TPU Belts", src: "/images/marcas/gates-tpu.jpeg", width: 140, height: 24, href: "/productos/bandas-poliuretano" },
+  { name: "Mafdel",          src: "/images/marcas/mafdel.jpg",     width: 47,  height: 60, href: null },
+  { name: "Nitta",           src: "/images/marcas/nitta.png",      width: 80,  height: 42, href: "/productos/correas-planas" },
+  { name: "Bando",           src: "/images/marcas/bando.jpg",      width: 68,  height: 36, href: "/productos/correas-transmision" },
+  { name: "Flexco",          src: "/images/marcas/flexco.png",     width: 118, height: 27, href: "/productos/grampas" },
 ];
 
 export default function Brands() {
@@ -18,7 +18,7 @@ export default function Brands() {
         <p className="text-center text-xs font-semibold uppercase tracking-widest text-slate-400 mb-10">
           Marcas líderes que representamos
         </p>
-        <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-10 sm:gap-x-16">
+        <div className="flex flex-wrap lg:flex-nowrap items-center justify-center gap-x-6 gap-y-8 sm:gap-x-8 lg:gap-x-6 xl:gap-x-10">
           {brands.map((b) => {
             const logo = (
               <Image
