@@ -26,17 +26,36 @@ const WHATSAPP = "https://wa.me/5491159041115?text=Hola%2C%20quisiera%20consulta
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
-    nombre: "", empresa: "", industria: "", provincia: "", mensaje: "",
+    nombre: "", email: "", telefono: "", empresa: "", industria: "", provincia: "", mensaje: "",
   });
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSent(true);
+    setSending(true);
+    setError(null);
+    try {
+      const res = await fetch("/api/contacto", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error || "No pudimos enviar la consulta.");
+      }
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "No pudimos enviar la consulta.");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -152,6 +171,36 @@ export default function Contact() {
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-medium text-slate-700">
+                      Email *
+                    </label>
+                    <input
+                      name="email"
+                      type="email"
+                      required
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="juan@empresa.com"
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-sm font-medium text-slate-700">
+                      Teléfono
+                    </label>
+                    <input
+                      name="telefono"
+                      type="tel"
+                      value={form.telefono}
+                      onChange={handleChange}
+                      placeholder="011 5904-1115"
+                      className="rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-5">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-sm font-medium text-slate-700">
                       Industria
                     </label>
                     <select
@@ -199,12 +248,19 @@ export default function Contact() {
                   />
                 </div>
 
+                {error && (
+                  <p className="text-sm text-red-600 bg-red-50 border border-red-100 rounded-xl px-4 py-3">
+                    {error}
+                  </p>
+                )}
+
                 <button
                   type="submit"
-                  className="flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-500 py-3.5 text-base font-semibold text-white transition-all"
+                  disabled={sending}
+                  className="flex items-center justify-center gap-2 rounded-full bg-blue-600 hover:bg-blue-500 py-3.5 text-base font-semibold text-white transition-all disabled:opacity-60 disabled:cursor-not-allowed"
                 >
                   <Send size={18} />
-                  Enviar consulta
+                  {sending ? "Enviando…" : "Enviar consulta"}
                 </button>
               </form>
             )}
