@@ -92,7 +92,16 @@ export default function Footer() {
             </h4>
             <ul className="flex flex-col gap-2 text-sm text-slate-500">
               <li>bandax@bandax.com</li>
-              <li>Buenos Aires, Argentina</li>
+              <li>
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Edison+2439,+Martinez,+Buenos+Aires,+Argentina"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-slate-800 transition-colors"
+                >
+                  Edison 2439, Martínez, Buenos Aires
+                </a>
+              </li>
               <li className="pt-1">
                 Entrega local inmediata · Envíos a todo el país
               </li>

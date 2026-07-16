@@ -23,6 +23,9 @@ const industrias = [
 ];
 
 const WHATSAPP = "https://wa.me/5491159041115?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+const DIRECCION = "Edison 2439, Martínez, Buenos Aires";
+const MAPS_URL =
+  "https://www.google.com/maps/search/?api=1&query=Edison+2439,+Martinez,+Buenos+Aires,+Argentina";
 
 export default function Contact() {
   const [sent, setSent] = useState(false);
@@ -103,15 +106,23 @@ export default function Contact() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10">
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-4 group"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500/10 group-hover:bg-orange-500/20 transition-colors">
                   <MapPin size={20} className="text-orange-500" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900">Ubicación</p>
-                  <p className="text-sm text-slate-500">Buenos Aires, Argentina</p>
+                  <p className="font-semibold text-slate-900 group-hover:text-orange-600 transition-colors">
+                    Ubicación
+                  </p>
+                  <p className="text-sm text-slate-500">{DIRECCION}</p>
+                  <p className="text-xs text-orange-600 font-medium">Ver en Google Maps →</p>
                 </div>
-              </div>
+              </a>
             </div>
           </div>
 
