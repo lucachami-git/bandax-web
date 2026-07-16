@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, Phone, Mail, MapPin } from "lucide-react";
+import { Send, Phone, PhoneCall, Mail, MapPin, Clock } from "lucide-react";
 
 const provincias = [
   "Buenos Aires", "CABA", "Catamarca", "Chaco", "Chubut", "Córdoba",
@@ -23,6 +23,11 @@ const industrias = [
 ];
 
 const WHATSAPP = "https://wa.me/5491159041115?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+const WHATSAPP_NUM = "+54 9 11 5904-1115";
+const TEL_LINEA = "011 4717-5151";
+const TEL_LINEA_HREF = "tel:+541147175151";
+const EMAIL = "bandax@bandax.com";
+const HORARIO = "Lunes a Viernes de 8.30 a 17.30 hs";
 // Access key de Web3Forms — pública por diseño (envía a bandax@bandax.com).
 const WEB3FORMS_ACCESS_KEY = "5cf76fba-d509-458c-8833-ac09e98c1ccc";
 const DIRECCION = "Edison 2439, Martínez, Buenos Aires";
@@ -35,6 +40,7 @@ export default function Contact() {
   const [error, setError] = useState<string | null>(null);
   const [form, setForm] = useState({
     nombre: "", email: "", telefono: "", empresa: "", industria: "", provincia: "", mensaje: "",
+    botcheck: "", // honeypot anti-spam: invisible para humanos
   });
 
   const handleChange = (
@@ -43,45 +49,51 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    // Honeypot: si el campo trampa vino completo, es un bot → simular OK sin enviar.
+    if (form.botcheck) { setSent(true); return; }
     setSending(true);
     setError(null);
-    try {
-      // 1) Email a bandax@bandax.com — Web3Forms exige envío desde el cliente.
-      const res = await fetch("https://api.web3forms.com/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          from_name: "Bandax Web",
-          subject: `Nueva consulta web de ${form.nombre}${form.empresa ? ` (${form.empresa})` : ""}`,
-          replyto: form.email,
-          Nombre: form.nombre,
-          Email: form.email,
-          Teléfono: form.telefono || "-",
-          Empresa: form.empresa || "-",
-          Industria: form.industria || "-",
-          Provincia: form.provincia || "-",
-          Mensaje: form.mensaje,
-        }),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok || !data.success) {
-        throw new Error(data.message || "No pudimos enviar la consulta.");
-      }
 
-      // 2) Reenvío al ERP en segundo plano (no bloquea ni frena si falla).
-      fetch("/api/contacto", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      }).catch(() => {});
+    // Email (Web3Forms) y registro en el ERP EN PARALELO: si el mail falla, la
+    // consulta igual queda guardada en el ERP (y viceversa). Alcanza con que uno funcione.
+    const emailOk = fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", Accept: "application/json" },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_ACCESS_KEY,
+        botcheck: form.botcheck,
+        from_name: "Bandax Web",
+        subject: `Nueva consulta web de ${form.nombre}${form.empresa ? ` (${form.empresa})` : ""}`,
+        replyto: form.email,
+        Nombre: form.nombre,
+        Email: form.email,
+        Teléfono: form.telefono || "-",
+        Empresa: form.empresa || "-",
+        Industria: form.industria || "-",
+        Provincia: form.provincia || "-",
+        Mensaje: form.mensaje,
+      }),
+    })
+      .then((r) => r.json())
+      .then((d) => Boolean(d?.success))
+      .catch(() => false);
 
+    const erpOk = fetch("/api/contacto", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(form),
+    })
+      .then((r) => r.json())
+      .then((d) => Boolean(d?.ok))
+      .catch(() => false);
+
+    const [mail, erp] = await Promise.all([emailOk, erpOk]);
+    if (mail || erp) {
       setSent(true);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "No pudimos enviar la consulta.");
-    } finally {
-      setSending(false);
+    } else {
+      setError("No pudimos enviar la consulta. Escribinos por WhatsApp.");
     }
+    setSending(false);
   };
 
   return (
@@ -115,19 +127,33 @@ export default function Contact() {
                   <p className="font-semibold text-slate-900 group-hover:text-green-600 transition-colors">
                     WhatsApp
                   </p>
-                  <p className="text-sm text-slate-500">Respuesta inmediata</p>
+                  <p className="text-sm text-slate-600 select-all">{WHATSAPP_NUM}</p>
+                  <p className="text-xs text-slate-400">Respuesta inmediata</p>
                 </div>
               </a>
 
-              <div className="flex items-center gap-4">
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10">
+              <a href={TEL_LINEA_HREF} className="flex items-center gap-4 group">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 transition-colors">
+                  <PhoneCall size={20} className="text-indigo-500" />
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                    Teléfono
+                  </p>
+                  <p className="text-sm text-slate-600 select-all">{TEL_LINEA}</p>
+                  <p className="text-xs text-slate-400">Línea fija</p>
+                </div>
+              </a>
+
+              <a href={`mailto:${EMAIL}`} className="flex items-center gap-4 group">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-blue-500/10 group-hover:bg-blue-500/20 transition-colors">
                   <Mail size={20} className="text-blue-500" />
                 </div>
                 <div>
-                  <p className="font-semibold text-slate-900">Email</p>
-                  <p className="text-sm text-slate-500">bandax@bandax.com</p>
+                  <p className="font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">Email</p>
+                  <p className="text-sm text-slate-600 select-all">{EMAIL}</p>
                 </div>
-              </div>
+              </a>
 
               <a
                 href={MAPS_URL}
@@ -146,6 +172,16 @@ export default function Contact() {
                   <p className="text-xs text-orange-600 font-medium">Ver en Google Maps →</p>
                 </div>
               </a>
+
+              <div className="flex items-center gap-4">
+                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-slate-500/10">
+                  <Clock size={20} className="text-slate-500" />
+                </div>
+                <div>
+                  <p className="font-semibold text-slate-900">Horarios</p>
+                  <p className="text-sm text-slate-500">{HORARIO}</p>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -174,6 +210,18 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                {/* Honeypot anti-spam: oculto para humanos, los bots lo completan */}
+                <input
+                  type="text"
+                  name="botcheck"
+                  value={form.botcheck}
+                  onChange={handleChange}
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
+
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div className="flex flex-col gap-1.5">
                     <label className="text-sm font-medium text-slate-700">
