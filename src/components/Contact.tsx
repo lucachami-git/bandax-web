@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Send, Phone, PhoneCall, Mail, MapPin, Clock } from "lucide-react";
+import { track } from "@/lib/analytics";
 
 const provincias = [
   "Buenos Aires", "CABA", "Catamarca", "Chaco", "Chubut", "Córdoba",
@@ -89,6 +90,7 @@ export default function Contact() {
 
     const [mail, erp] = await Promise.all([emailOk, erpOk]);
     if (mail || erp) {
+      track("form_submit");
       setSent(true);
     } else {
       setError("No pudimos enviar la consulta. Escribinos por WhatsApp.");

@@ -2,6 +2,7 @@
 import { Geist } from "next/font/google";
 import "./globals.css";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
+import Analytics from "@/components/Analytics";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -46,6 +47,7 @@ export default function RootLayout({
     <html lang="es" className={`${geist.variable} h-full antialiased`}>
       <body className="bx-fondo min-h-full flex flex-col">
         <ServiceWorkerRegistration />
+        <Analytics />
         {children}
       </body>
     </html>
