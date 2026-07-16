@@ -30,7 +30,7 @@ export interface ProductoDetalle {
   industries?: string[];
 }
 
-export const WHATSAPP_NUMBER = "5491147175151";
+export const WHATSAPP_NUMBER = "5491159041115";
 
 export const productos: ProductoDetalle[] = [
   {

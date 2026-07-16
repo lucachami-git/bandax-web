@@ -15,7 +15,7 @@ const navCompany = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-const WHATSAPP = "https://wa.me/5491147175151?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+const WHATSAPP = "https://wa.me/5491159041115?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
 
 export default function Footer() {
   return (

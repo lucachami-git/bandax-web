@@ -96,7 +96,7 @@ const colorMap: Record<string, { ring: string; tag: string; text: string }> = {
   orange: { ring: "ring-orange-100", tag: "bg-orange-50 text-orange-700", text: "text-orange-600" },
 };
 
-const WHATSAPP = "https://wa.me/5491147175151?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
+const WHATSAPP = "https://wa.me/5491159041115?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
 
 export default function Products() {
   return (

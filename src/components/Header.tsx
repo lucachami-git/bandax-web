@@ -23,8 +23,6 @@ const navLinks = [
   { href: "/#contacto",  label: "Contacto" },
 ];
 
-const WHATSAPP = "https://wa.me/5491147175151?text=Hola%2C%20quisiera%20consultar%20sobre%20sus%20productos.";
-
 function FacebookIcon() {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" className="h-4 w-4" aria-hidden="true">
@@ -141,15 +139,6 @@ export default function Header() {
             >
               <InstagramIcon />
             </a>
-            <a
-              href={WHATSAPP}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 rounded-full bg-green-500 hover:bg-green-400 px-4 py-2 text-sm font-semibold text-white transition-colors"
-            >
-              <Phone size={14} />
-              WhatsApp
-            </a>
           </div>
 
           {/* ── Mobile toggle ── */}
@@ -220,17 +209,6 @@ export default function Header() {
               <InstagramIcon />
             </a>
           </div>
-
-          <a
-            href={WHATSAPP}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={closeMenu}
-            className="mt-4 flex items-center justify-center gap-2 rounded-full bg-green-500 hover:bg-green-400 py-3 text-base font-semibold text-white transition-colors"
-          >
-            <Phone size={18} />
-            Consultar por WhatsApp
-          </a>
         </div>
       )}
     </header>
