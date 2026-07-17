@@ -92,10 +92,10 @@ const WHATSAPP = "https://wa.me/5491159041115?text=Hola%2C%20quisiera%20consulta
 export default function Products() {
   return (
     // scroll-mt compensa la barra fija al entrar por #productos
-    <section id="productos" className="scroll-mt-20 py-10 sm:py-14">
+    <section id="productos" className="scroll-mt-20 py-6 sm:py-10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        {/* Header */}
-        <div className="mx-auto max-w-2xl text-center mb-6">
+        {/* Header — max-w-4xl para que la bajada entre en una sola línea */}
+        <div className="mx-auto max-w-4xl text-center mb-4">
           <p className="text-sm font-semibold uppercase tracking-widest text-blue-600 mb-2">
             Nuestros Productos
           </p>
@@ -103,8 +103,7 @@ export default function Products() {
             Todo lo que su línea necesita
           </h2>
           <p className="mt-2 text-sm text-slate-500">
-            Más de 8 líneas de productos para cubrir cualquier necesidad
-            industrial, con stock permanente y entrega express.
+            Más de 8 líneas de productos para cubrir cualquier necesidad industrial, con stock permanente y entrega express.
           </p>
         </div>
 
@@ -144,7 +143,7 @@ export default function Products() {
         </div>
 
         {/* CTA bottom */}
-        <div className="mt-8 text-center">
+        <div className="mt-5 text-center">
           <a
             href={WHATSAPP}
             target="_blank"
