@@ -1,12 +1,11 @@
+import Image from "next/image";
 import { MapPin, Star, Award, Globe } from "lucide-react";
 
-const industries = [
-  "Industria Alimenticia",
-  "Logística y Distribución",
-  "Manufactura General",
-  "Industria Farmacéutica",
-  "Embalaje y Packaging",
-  "Minería y Construcción",
+const capacidades = [
+  { src: "/images/quienes-somos/alimentos.png",   label: "Procesamiento de alimentos" },
+  { src: "/images/quienes-somos/transporte.png",  label: "Transporte de productos" },
+  { src: "/images/quienes-somos/paquetes.png",    label: "Manipulación de paquetes" },
+  { src: "/images/quienes-somos/transmision.png", label: "Transmisión de potencia" },
 ];
 
 const badges = [
@@ -66,7 +65,7 @@ export default function AboutUs() {
               bandas industriales y correas de transmisión. Fundada en la década
               de los 90, hemos crecido junto a la industria argentina
               proveyendo productos de alta calidad con el respaldo de marcas
-              internacionales líderes como Yongli, Gates y otras.
+              internacionales líderes.
             </p>
             <p className="mt-4 text-lg text-slate-600 leading-relaxed">
               Contamos con personal técnico especializado que asesora desde la
@@ -74,20 +73,21 @@ export default function AboutUs() {
               para cada aplicación.
             </p>
 
-            <div className="mt-8">
-              <p className="font-semibold text-slate-800 mb-3">
-                Industrias que servimos:
-              </p>
-              <div className="flex flex-wrap gap-2">
-                {industries.map((ind) => (
-                  <span
-                    key={ind}
-                    className="rounded-full border border-slate-200 bg-white px-4 py-1.5 text-sm font-medium text-slate-700"
-                  >
-                    {ind}
+            <div className="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-6">
+              {capacidades.map((c) => (
+                <div key={c.label} className="flex flex-col items-center text-center gap-3">
+                  <Image
+                    src={c.src}
+                    alt=""
+                    width={96}
+                    height={96}
+                    className="h-20 w-20 object-contain"
+                  />
+                  <span className="text-sm font-semibold text-blue-600 leading-snug">
+                    {c.label}
                   </span>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
