@@ -1,12 +1,22 @@
 ﻿import type { Metadata, Viewport } from "next";
-import { Geist } from "next/font/google";
+import { Roboto, Lato } from "next/font/google";
 import "./globals.css";
 import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import Analytics from "@/components/Analytics";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+// Misma tipografía que www.bandax.com: Roboto (cuerpo) + Lato (títulos)
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700", "900"],
+  display: "swap",
+});
+
+const lato = Lato({
+  variable: "--font-lato",
+  subsets: ["latin"],
+  weight: ["400", "700", "900"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -44,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es" className={`${geist.variable} h-full antialiased`}>
+    <html lang="es" className={`${roboto.variable} ${lato.variable} h-full antialiased`}>
       <body className="bx-fondo min-h-full flex flex-col">
         <ServiceWorkerRegistration />
         <Analytics />
